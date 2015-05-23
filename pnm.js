@@ -19,3 +19,14 @@ if (args.help || !args.file) {
 	//since in global scope can't just return need to actually exit the process
 	// can give a status code upon exiting (eg in this case 1)
 }
+
+
+var fileContents = require("./parse-lst.js");
+
+fileContents.say(args.file).
+val(function(contents) {
+	console.log(contents.toString());
+})
+.or(function(err) {
+	console.error("Error" + err);
+});

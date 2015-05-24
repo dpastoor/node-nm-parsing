@@ -25,7 +25,10 @@ var fileContents = require("./parse-lst.js");
 
 fileContents.say(args.file).
 val(function(contents) {
-	console.log(contents.toString());
+	var array = contents.toString().split("\n");
+	for(var i in array) {
+		console.log(i + " " + array[i]);
+	}
 })
 .or(function(err) {
 	console.error("Error" + err);

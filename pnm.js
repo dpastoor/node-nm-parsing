@@ -27,9 +27,13 @@ fileContents.say(args.file).
 	val(function(contents) {
 	var lines = contents.toString().split("\n");
 	var thetas = fileContents.extractThetaLines(lines);
+	var thetaResults = fileContents.extractThetaResults(lines);
 
 	var parsedThetas = fileContents.parseThetas(thetas);
-	console.log("parsed thetas:");
+	var thetaValues = fileContents.parseThetaValues(thetaResults);
+	for (var i = 0; i < parsedThetas.length; i++) {
+		parsedThetas[i]["thetaResult"] = thetaValues[i];
+	}
 	console.log(JSON.stringify({thetas: parsedThetas}));
 	})
 	.or(function(err) {

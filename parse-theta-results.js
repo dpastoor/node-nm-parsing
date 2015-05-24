@@ -14,7 +14,7 @@ function extractThetaResults (lines) {
 		//find the $THETA line and go to first omega
 			if(start.test(lines[i])) {
 				startThetaBlock = i;
-				for (var j = i; j < lines.length-1; j++) {
+				for (var j = i; j < lines.length; j++) {
 					if (end.test(lines[j])) {
 						endThetaBlock = j;
 						break;
@@ -52,4 +52,4 @@ function thetaValues (lines) {
 }
 
 //thetaNums(thetaResultsBlock);
-console.log(thetaValues(thetaResultsBlock));
+thetaValues(thetaResultsBlock);

@@ -31,7 +31,7 @@ function extractThetaLines (lines) {
 				}
 			}
 	}
-	console.log("start Theta: " + startThetaBlock + " end Theta: " + endThetaBlock);
+	//console.log("start Theta: " + startThetaBlock + " end Theta: " + endThetaBlock);
   return lines.slice(startThetaBlock, endThetaBlock)
               .filter(function(e) {return e === 0 || e}); // filter blank rows
 }

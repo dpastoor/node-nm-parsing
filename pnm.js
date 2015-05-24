@@ -26,8 +26,11 @@ var fileContents = require("./parse-lst.js");
 fileContents.say(args.file).
 	val(function(contents) {
 	var lines = contents.toString().split("\n");
-	var thetas = fileContents.parseTheta(lines);
-	console.log(thetas);
+	var thetas = fileContents.extractThetaLines(lines);
+
+	var parsedThetas = fileContents.parseThetas(thetas);
+	console.log("parsed thetas:");
+	console.log(parsedThetas);
 	})
 	.or(function(err) {
 		console.error("Error" + err);

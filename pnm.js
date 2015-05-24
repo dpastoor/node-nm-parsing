@@ -30,7 +30,7 @@ fileContents.say(args.file).
 
 	var parsedThetas = fileContents.parseThetas(thetas);
 	console.log("parsed thetas:");
-	console.log(parsedThetas);
+	console.log(JSON.stringify({thetas: parsedThetas}));
 	})
 	.or(function(err) {
 		console.error("Error" + err);

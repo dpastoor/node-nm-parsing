@@ -28,15 +28,28 @@ function extractThetaResults (lines) {
 
 var thetaResultsBlock = extractThetaResults(thetaResults);
 
-function thetaNums (lines){
-	matches = [];
-	var thetaPattern = /(TH\s\d\s)|(TH\d+)/g;
-	var output = _.forEach(lines, function(line) {
-		matches.push(line.match(thetaPattern));
+//function thetaNums (lines){
+//	matches = [];
+//	var thetaPattern = /(TH\s\d\s)|(TH\d+)/g;
+//	_.forEach(lines, function(line) {
+//		matches.push(line.match(thetaPattern));
+//	});
+//	console.log(_.flatten(matches
+//		.filter(function(e) {return e === 0 || e})
+//		)
+//	);
+//}
+
+function thetaValues (lines) {
+	var results = []
+	var values = lines.filter(function(line) {
+		return /^\d/.test(line.trim());
 	});
-	console.log(_.flatten(matches
-		.filter(function(e) {return e === 0 || e})
-		)
-	);
+	_.forEach(values, function(line) {
+		results.push(line.trim().split(/\s+/));
+	});
+	return _.flatten(results);
 }
-thetaNums(thetaResultsBlock);
+
+//thetaNums(thetaResultsBlock);
+console.log(thetaValues(thetaResultsBlock));

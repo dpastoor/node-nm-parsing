@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const ASQ = require('asynquence');
 const _ = require('lodash');
 require("asynquence-contrib"); // no need to expose

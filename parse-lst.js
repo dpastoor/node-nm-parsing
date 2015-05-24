@@ -31,7 +31,8 @@ function parseTheta (lines) {
 			}
 	}
 	console.log("start Theta: " + startThetaBlock + " end Theta: " + endThetaBlock);
-  return lines.slice(startThetaBlock, endThetaBlock);
+  return lines.slice(startThetaBlock, endThetaBlock)
+              .filter(function(e) {return e === 0 || e}); // filter blank rows
 }
 
 module.exports.say = say;

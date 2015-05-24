@@ -81,7 +81,7 @@ function extractThetaResults (lines) {
 function parseThetaValues (lines) {
   var results = []
   var values = lines.filter(function(line) {
-    return /^\d/.test(line.trim());
+    return /^(\d|\-)/.test(line.trim());
   });
   _.forEach(values, function(line) {
     results.push(line.trim().split(/\s+/));

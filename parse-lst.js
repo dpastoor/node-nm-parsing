@@ -28,7 +28,9 @@ function extractThetaLines (lines) {
 						endThetaBlock = j;
 						break;
 					}
+                    
 				}
+          break
 			}
 	}
 	//console.log("start Theta: " + startThetaBlock + " end Theta: " + endThetaBlock);
@@ -39,7 +41,10 @@ function extractThetaLines (lines) {
 function parseThetas (thetaArray) {
   // should have array of thetas from extraThetaLines
   var thetas = [];
-  thetaArray.splice(0, 1); //first element should be $THETA
+  thetaArray = thetaArray.map(function(line) {
+    return line.replace("$THETA", "").trim()
+  }).filter(function(e) {return e === 0 || e});
+ 
   _.forEach(thetaArray, function(n, i) {
       var split = n.split(';').filter(function(e) {return e === 0 || e});
       var info = {
@@ -57,8 +62,6 @@ function extractThetaResults (lines) {
   var start = /THETA - VECTOR OF FIXED EFFECTS PARAMETERS/
   var end = /OMEGA - COV MATRIX FOR RANDOM EFFECTS - ETAS/
   for(var i in lines) {
-    // block to extract start and end theta blocks
-    //find the $THETA line and go to first omega
       if(start.test(lines[i])) {
         startThetaBlock = i;
         for (var j = i; j < lines.length-1; j++) {
@@ -66,7 +69,9 @@ function extractThetaResults (lines) {
             endThetaBlock = j;
             break;
           }
+          
         }
+        break
       }
   }
   return lines.slice(startThetaBlock, endThetaBlock)

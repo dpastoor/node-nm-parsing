@@ -10,8 +10,6 @@ function extractThetaResults (lines) {
 	var start = /THETA - VECTOR OF FIXED EFFECTS PARAMETERS/
 	var end = /OMEGA - COV MATRIX FOR RANDOM EFFECTS - ETAS/
 	for(var i in lines) {
-		// block to extract start and end theta blocks
-		//find the $THETA line and go to first omega
 			if(start.test(lines[i])) {
 				startThetaBlock = i;
 				for (var j = i; j < lines.length; j++) {
@@ -20,6 +18,7 @@ function extractThetaResults (lines) {
 						break;
 					}
 				}
+			break // should now have start and end blocks
 			}
 	}
 	console.log("start Theta: " + startThetaBlock + " end Theta: " + endThetaBlock);

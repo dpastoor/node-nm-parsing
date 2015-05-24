@@ -24,12 +24,25 @@ if (args.help || !args.file) {
 var fileContents = require("./parse-lst.js");
 
 fileContents.say(args.file).
-val(function(contents) {
-	var array = contents.toString().split("\n");
-	for(var i in array) {
-		console.log(i + " " + array[i]);
-	}
-})
-.or(function(err) {
-	console.error("Error" + err);
-});
+	val(function(contents) {
+		var array = contents.toString().split("\n");
+		var thetaBlock, startThetaBlock, endThetaBlock;
+		for(var i in array) {
+			// block to extract start and end theta blocks
+			//find the $THETA line and go to first omega
+				if(/\$THETA/.test(array[i])) {
+					startThetaBlock = i;
+					for (var j = i; j < array.length-1; j++) {
+						if (/\$OMEGA/.test(array[j])) {
+							endThetaBlock = j;
+							break;
+						}
+					}
+				}
+		}
+		console.log("start Theta: " + startThetaBlock + " end Theta: " + endThetaBlock);
+		console.log(array.slice(startThetaBlock,endThetaBlock));
+	})
+	.or(function(err) {
+		console.error("Error" + err);
+	});

@@ -5,3 +5,10 @@ $THETA
 53.8  ; Vd
 
 $OMEGA
+0.1
+$OMEGA BLOCK(1)
+0.1
+
+$EST
+
+final stuff

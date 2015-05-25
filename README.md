@@ -7,6 +7,9 @@ example use via:
 iojs pnm.js --file=theta-block.lst
 ```
 
+**NOTE: the file must have a path in relation to the pnm.js file**
+
+
 can be read directly into R via a system call
 
 ```
@@ -15,6 +18,17 @@ result <- system("iojs pnm.js --file=run001.lst", intern = T)
 jsonlite::fromJSON(result[1])
 
 ```
+
+
+## setup on windows
+
+download node or [iojs](https://iojs.org/en/index.html)
+
+```
+git clone https://www.github.com/dpastoor/node-nm-parsing.git
+```
+
+and thats it!
 
 ## Known bugs
 

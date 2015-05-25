@@ -19,6 +19,7 @@ jsonlite::fromJSON(result[1])
 
 ```
 
+**NOTE: from R, make sure the .pnm.js file is called from the path relative to your current working directory**
 
 ## setup on windows
 

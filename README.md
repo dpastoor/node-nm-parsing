@@ -26,10 +26,11 @@ $THETA
 $OMEGA
 ```
 
-* if any lines between theta and omega are non-blank but not theta values it will error
-* if multiple `$THETA` statements are present it will not properly parse
 
-Examples that DON'T work
+## fixed bugs
+Tested parsing against the following styles of implementing $THETA blocks
+
+Examples that DO work
 ```
 $THETA  
 (0,26) ; 1 CL: Clearance (L/h)
@@ -96,3 +97,5 @@ $THETA  (-1,-0.130549,5) ; KASEXF1
 $OMEGA  BLOCK(2)
  0.0742298
  ```
+
+ If you have a type of theta block that is not correctly parsed - let me know! 
